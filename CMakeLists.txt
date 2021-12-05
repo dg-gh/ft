@@ -1,0 +1,27 @@
+cmake_minimum_required(VERSION "3.5")
+
+project("my_app")
+
+set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
+set(THREADS_PREFER_PTHREAD_FLAG TRUE)
+find_package(Threads REQUIRED)
+
+set(CMAKE_CXX_FLAGS "-std=c++17 -lstdc++fs -pthread -lws2_32 -lwsock32 -O3")
+
+add_executable("my_app"
+	${PROJECT_SOURCE_DIR}/src/main.cpp
+	${PROJECT_SOURCE_DIR}/src/ft_server.cpp
+	${PROJECT_SOURCE_DIR}/src/ft_client.cpp
+)
+
+# Windows SDK
+if(WIN32)
+	target_link_libraries("my_app" wsock32 ws2_32)
+endif()
+
+target_link_libraries("my_app" Threads::Threads)
+
+target_include_directories("my_app"
+	PUBLIC ${PROJECT_SOURCE_DIR}/include
+	PUBLIC ${PROJECT_SOURCE_DIR}/asio/include
+)
