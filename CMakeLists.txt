@@ -14,7 +14,6 @@ add_executable("my_app"
 	${PROJECT_SOURCE_DIR}/src/ft_client.cpp
 )
 
-# Windows SDK
 if(WIN32)
 	target_link_libraries("my_app" wsock32 ws2_32)
 endif()
