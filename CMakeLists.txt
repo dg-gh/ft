@@ -7,7 +7,7 @@ set(THREADS_PREFER_PTHREAD_FLAG TRUE)
 find_package(Threads REQUIRED)
 
 if(WIN32)
-    set(CMAKE_CXX_FLAGS "-std=c++17 -pthread  -O3 -lws2_32 -lwsock32")
+    set(CMAKE_CXX_FLAGS "-std=c++17 -pthread -O3 -lws2_32 -lwsock32")
 elseif(UNIX)
     set(CMAKE_CXX_FLAGS "-std=c++17 -pthread -O3")
 endif()
