@@ -6,7 +6,11 @@ set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 set(THREADS_PREFER_PTHREAD_FLAG TRUE)
 find_package(Threads REQUIRED)
 
-set(CMAKE_CXX_FLAGS "-std=c++17 -lstdc++fs -pthread -lws2_32 -lwsock32 -O3")
+if(WIN32)
+    set(CMAKE_CXX_FLAGS "-std=c++17 -pthread  -O3 -lws2_32 -lwsock32")
+elseif(UNIX)
+    set(CMAKE_CXX_FLAGS "-std=c++17 -pthread -O3")
+endif()
 
 add_executable("my_app"
 	${PROJECT_SOURCE_DIR}/src/main.cpp
