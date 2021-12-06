@@ -20,9 +20,8 @@ add_executable("my_app"
 
 if(WIN32)
 	target_link_libraries("my_app" wsock32 ws2_32)
+	target_link_libraries("my_app" Threads::Threads)
 endif()
-
-target_link_libraries("my_app" Threads::Threads)
 
 target_include_directories("my_app"
 	PUBLIC ${PROJECT_SOURCE_DIR}/include
