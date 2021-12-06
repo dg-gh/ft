@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION "3.5")
 
-project("my_app")
+project("my_app" LANGUAGES CXX)
 
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 set(THREADS_PREFER_PTHREAD_FLAG TRUE)
