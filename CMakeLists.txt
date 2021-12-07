@@ -27,3 +27,20 @@ target_include_directories("server"
 	PUBLIC ${PROJECT_SOURCE_DIR}/include
 	PUBLIC ${PROJECT_SOURCE_DIR}/asio/include
 )
+
+
+add_executable("client"
+	${PROJECT_SOURCE_DIR}/src/main_client.cpp
+	${PROJECT_SOURCE_DIR}/src/ft_client.cpp
+)
+
+if(WIN32)
+	target_link_libraries("client" wsock32 ws2_32)
+endif()
+
+target_link_libraries("client" Threads::Threads)
+
+target_include_directories("client"
+	PUBLIC ${PROJECT_SOURCE_DIR}/include
+	PUBLIC ${PROJECT_SOURCE_DIR}/asio/include
+)
