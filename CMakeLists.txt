@@ -12,6 +12,7 @@ elseif(UNIX)
     set(CMAKE_CXX_FLAGS "-std=c++17 -pthread -O3")
 endif()
 
+
 add_executable("server"
 	${PROJECT_SOURCE_DIR}/src/main_server.cpp
 	${PROJECT_SOURCE_DIR}/src/ft_server.cpp
