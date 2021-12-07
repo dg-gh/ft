@@ -31,7 +31,14 @@ bool ft_server::start(std::uint16_t port, std::size_t number_of_threads)
 			m_threads.resize(number_of_threads);
 			for (std::size_t n = 0; n < number_of_threads; n++)
 			{
-				m_threads[n] = std::thread([&]() { m_asio_context.run(); });
+				m_threads[n] = std::thread(
+					[&]()
+					{
+						std::this_thread::sleep_for(std::chrono::milliseconds(100));
+						// why does THIS make it work when number_of_threads > 1 ? D: ... gotta fix this awful stuff
+						m_asio_context.run();
+					}
+				);
 			}
 			m_running = true;
 			listen();
