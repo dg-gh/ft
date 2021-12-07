@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION "3.5")
 
-project("my_app" LANGUAGES CXX)
+project("ft" LANGUAGES CXX)
 
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 set(THREADS_PREFER_PTHREAD_FLAG TRUE)
@@ -12,19 +12,18 @@ elseif(UNIX)
     set(CMAKE_CXX_FLAGS "-std=c++17 -pthread -O3")
 endif()
 
-add_executable("my_app"
-	${PROJECT_SOURCE_DIR}/src/main.cpp
+add_executable("server"
+	${PROJECT_SOURCE_DIR}/src/main_server.cpp
 	${PROJECT_SOURCE_DIR}/src/ft_server.cpp
-	${PROJECT_SOURCE_DIR}/src/ft_client.cpp
 )
 
 if(WIN32)
-	target_link_libraries("my_app" wsock32 ws2_32)
+	target_link_libraries("server" wsock32 ws2_32)
 endif()
 
-target_link_libraries("my_app" Threads::Threads)
+target_link_libraries("server" Threads::Threads)
 
-target_include_directories("my_app"
+target_include_directories("server"
 	PUBLIC ${PROJECT_SOURCE_DIR}/include
 	PUBLIC ${PROJECT_SOURCE_DIR}/asio/include
 )
